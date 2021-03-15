@@ -14,9 +14,10 @@ Rendu :
 - dossier level -> fichier flag (parfois pas de flag), dossier Ressources
 
 Process:
-- trouver flag
-- se connecter au level avec password : su flag00. La commande "su" (Switch User) permet d'ouvrir une session avec l'ID d'un autre utilisateur
+- trouver password
+- se connecter au user flagXX avec password : su flag00. La commande "su" (Switch User) permet d'ouvrir une session avec l'ID d'un autre utilisateur
 - getflag
+- se connecter au level suivant : su levelXX
 
 
 
