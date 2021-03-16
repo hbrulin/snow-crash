@@ -10,21 +10,26 @@ autres sites :
 - duckduckgo.com
 
 
-Rendu : 
-- dossier level -> fichier flag (parfois pas de flag), dossier Ressources
-
 Process:
 - trouver password
 - se connecter au user flagXX avec password : su flag00. La commande "su" (Switch User) permet d'ouvrir une session avec l'ID d'un autre utilisateur
 - getflag
 - se connecter au level suivant : su levelXX
 
-
-
+-Start : 
 Mount: https://www.techwalla.com/articles/how-to-mount-mdf-mds-files
 In VM settings, change the first internet adapter by Host-Only Adapter (for ssh connexion)
 ssh level00@ip -p 4242
-level00:level00
+login:password : level00:level00
+
+- Container for external programs
+docker build -t img .
+docker run -it img
+https://github.com/rothgar/docker-john/blob/master/Dockerfile
+TODO:
+- retirer les trucs inutiles du dockerfile à la fin
+- ssh keygen necessary?
+
 
 - Level00
 find . : current and subdir
@@ -38,7 +43,7 @@ view file perm of john binary : ls -l /usr/sbin/john
 i cannot change its permission with sudo chmod +x /usr/sbin/john. /sbin is for binaries superuser (root) privileges required.
 so i cannot use john on encrypted data (that would be brute force)
 
-the encrypted password in the file was encrypted with rot11 (ceaser cypher): It replaces each letter with the letter 11 positions after that letter.
+the encrypted password in the file was encrypted with rot11 (ceasar cypher): It replaces each letter with the letter 11 positions after that letter.
 rot13 : echo "cdiiddwpgswtgt" | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
 The tr command in UNIX is a command line utility for translating or deleting characters.
 https://www.geeksforgeeks.org/tr-command-in-unix-linux-with-examples/#:~:text=The%20tr%20command%20in%20UNIX,to%20support%20more%20complex%20translation. 
@@ -51,13 +56,12 @@ TODO:
 launch getflag - save it in level00
 -> use it for "su level01"
 
-
-
-
-
-
-
-
-
-Info:
-- commande scp : https://technique.arscenic.org/transfert-de-donnees-entre/article/scp-transfert-de-fichier-a-travers 
+- level01
+dans /etc : fichiers de configuration
+il y a un fichier de conf passwd: traditional Unix password file. - The command passw can be used to change password of current user.
+There is also /etc/shadow which stores actual password in encrypted format : https://www.cyberciti.biz/faq/understanding-etcshadow-file/.
+/etc/shadow cannot be cat : -rw-r----- (first triad owner, 2nd group mbs, third others).
+But /etc/passwd can be cat, il y a une ligne : flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash.
+Le password n'est pas caché comme les autres.
+Mettre le password dans un file et l'envoyer dans le conteneur docker. 
+Lancer john.

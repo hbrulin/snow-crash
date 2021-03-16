@@ -1,3 +1,5 @@
 find / -user flag00 #filter output with dev/null
 cat /usr/sbin/john
-echo "cdiiddwpgswtgt" | tr '[A-Za-z]' '[L-ZA-Kl-za-k]'
+
+
+echo "cdiiddwpgswtgt" | tr '[A-Za-z]' '[L-ZA-Kl-za-k]'  #nottoohardhere
