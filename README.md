@@ -25,6 +25,7 @@ login:password : level00:level00
 - Container for external programs
 docker build -t img .
 docker run -it img
+docker inspect to know IP - see if i can scp from VM to docker, otherwise it's still fine
 https://github.com/rothgar/docker-john/blob/master/Dockerfile
 TODO:
 - retirer les trucs inutiles du dockerfile à la fin
@@ -64,4 +65,9 @@ There is also /etc/shadow which stores actual password in encrypted format : htt
 But /etc/passwd can be cat, il y a une ligne : flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash.
 Le password n'est pas caché comme les autres.
 Mettre le password dans un file et l'envoyer dans le conteneur docker. 
-Lancer john.
+Lancer john qui va essayer de casser le password file.
+John peut aussi unshadow un shadow passwd file (ici on ne peut pas)
+
+- level02
+There is a pcap file in /home/user/level02
+Possible to open it with wireshark

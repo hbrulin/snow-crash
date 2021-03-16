@@ -16,6 +16,7 @@ RUN apk update \
 RUN apk add --no-cache gdb
 RUN apk add --no-cache openssl-dev
 RUN apk add --no-cache git
+RUN apk add --no-cache wireshark
 
 WORKDIR /root
 
@@ -33,8 +34,9 @@ RUN ./configure && make clean && make -s
 WORKDIR /root
 RUN echo 'alias john="./JohnTheRipper/run/john"' >> ~/.bashrc
 
-EXPOSE 8080
+EXPOSE 8080:8080
+EXPOSE 2200:22
+
+#RUN ssh-keygen 
 
 CMD ["/bin/bash"]
-
-#RUN ssh-keygen -A necessary?
