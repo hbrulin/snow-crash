@@ -124,3 +124,9 @@ TODO : but why does it work in binary but not normally?
 Go directly to level04 with the flag.
 
 - level04
+Il y a un fichier : level04.pl. C'est un script perl.
+On voit l'adresse où on peut envoyer une requête.
+
+TODO: 
+- bien comprendre chaque ligne du script perl.
+- use it with curl in docker?
