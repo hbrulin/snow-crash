@@ -1,2 +1,10 @@
 ls
-#open with wireshark in docker
+scp -P 4242 level02@192.168.99.106:level02.pcap . #indocker
+tshark -n -V -r level02.pcap | grep -i 'authentication\|plain *text\|pass *word\|user *name\|simple:\|parameter name:\|parameter value:\|credentials:'
+#tshark -V -r level02.pcap > result : verbose option to expand on all packets.
+
+#Then I list all the data streams and find the one that says "password"
+tshark -r level02.pcap -T fields -e  data
+
+Then I decode all the packages below to find my password : https://www.convertstring.com/fr/EncodeDecode/HexDecode
+

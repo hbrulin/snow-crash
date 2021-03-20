@@ -1,5 +1,6 @@
 cat /etc/passwd
+#possible aussi =  cat /etc/passwd | grep "flag01"
 #scp -P 8080 /etc/passwd root@127.0.0.1:/root ->does not work in this direction.
 #from dockerfile:
 scp -P 4242 level01@192.168.99.106:/etc/passwd .
-john passwd --show
+john passwd --show 

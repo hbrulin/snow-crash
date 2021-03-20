@@ -16,7 +16,7 @@ RUN apk update \
 RUN apk add --no-cache gdb
 RUN apk add --no-cache openssl-dev
 RUN apk add --no-cache git
-RUN apk add --no-cache wireshark
+RUN apk add --no-cache tshark
 
 WORKDIR /root
 
@@ -36,7 +36,6 @@ RUN echo 'alias john="./JohnTheRipper/run/john"' >> ~/.bashrc
 
 EXPOSE 8080:8080
 EXPOSE 2200:22
-
 #RUN ssh-keygen 
 
 CMD ["/bin/bash"]

@@ -30,6 +30,7 @@ https://github.com/rothgar/docker-john/blob/master/Dockerfile
 TODO:
 - retirer les trucs inutiles du dockerfile à la fin
 - ssh keygen necessary?
+- better to do it all from docker?
 
 
 - Level00
@@ -51,6 +52,8 @@ https://www.geeksforgeeks.org/tr-command-in-unix-linux-with-examples/#:~:text=Th
 for rot15 : tr '[A-Za-z]' '[P-ZA-Op-za-o]'
 rot11 : tr '[A-Za-z]' '[L-ZA-Kl-za-k]'
 
+password : nottoohardhere
+
 TODO:
 - implement a program that tries different rotations until it works with 'su flag00'
 
@@ -68,6 +71,48 @@ Mettre le password dans un file et l'envoyer dans le conteneur docker.
 Lancer john qui va essayer de casser le password file.
 John peut aussi unshadow un shadow passwd file (ici on ne peut pas)
 
+password:abcdefg
+
 - level02
 There is a pcap file in /home/user/level02
-Possible to open it with wireshark
+Possible to open it with tshark (better than wireshark from command line) : https://www.wireshark.org/docs/man-pages/tshark.html.
+Packet capture (PCAP) analysis is the process of obtaining and analyzing individual data packets that travel through your network.
+PCAP (short for Packet Capture) is the name of the API commonly used to record packet metrics. PCAP files are especially helpful because they can record multilayer traffic data, capturing packets originating from the data link layer all the way to the application layer. If you’re looking to perform network packet analysis, chances are the software you’re using creates PCAP files.
+https://www.dnsstuff.com/pcap-analysis 
+https://www.hackingarticles.in/beginners-guide-to-tshark-part-1/
+https://linuxhint.com/wireshark-command-line-interface-tshark/
+https://baturorkun.medium.com/using-wireshark-command-line-tool-tshark-62a32beef12c
+Here I found the info on how to look for credentials in pcap file: https://www.infosecmatter.com/capture-passwords-using-wireshark/#capture_passwords_with_tshark 
+I can see the hex dump that corresponds to the password.
+Info on hex dumps : https://www.wireshark.org/docs/wsug_html_chunked/ChIOImportSection.html
+Then I print all the data streams and find the one that says "Password" (000d0a50617373776f72643a20) : tshark -r level02.pcap -T fields -e  data
+ALl of what is below is my password being sent, until last line : 
+66
+74
+5f
+77
+61
+6e
+64
+72
+7f
+7f
+7f
+4e
+44
+52
+65
+6c
+7f
+4c
+30
+4c
+0d
+000d0a
+01
+
+Decode it here: https://www.convertstring.com/fr/EncodeDecode/HexDecode ==> ft_wandrNDRelL0L
+
+
+-level 03
+There is a binary that, when launched, says Exploit me.
