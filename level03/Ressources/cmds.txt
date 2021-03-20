@@ -1,0 +1,8 @@
+cat level03
+cd /tmp
+touch echo
+vim echo && edit as in echo file in Ressources
+chmod 777 echo
+export PATH=/tmp:${PATH}
+cd /home/user/level03
+./level03

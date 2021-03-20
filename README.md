@@ -114,5 +114,13 @@ ALl of what is below is my password being sent, until last line :
 Decode it here: https://www.convertstring.com/fr/EncodeDecode/HexDecode ==> ft_wandrNDRelL0L
 
 
--level 03
+- level 03
 There is a binary that, when launched, says Exploit me.
+If i cat the file, I see "/usr/bin/env echo Exploit me"
+I can in /tmp file, create a file called echo and use getflag in it.
+
+TODO : but why does it work in binary but not normally?
+
+Go directly to level04 with the flag.
+
+- level04
