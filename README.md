@@ -130,3 +130,12 @@ On voit l'adresse où on peut envoyer une requête.
 TODO: 
 - bien comprendre chaque ligne du script perl.
 - use it with curl in docker?
+
+- level 5
+Chercher un folder level05 de la même manière qu'au level00.
+Aller voir ce mail : */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+It's a cron tab -> the file openarenaserver is launched regularly. It's a script that executed script in the folder /opt/openarenaserver.
+Create a script that calls getflag, and wait for it to disappear (accoridng to cron time job).
+
+-level06
+One script and one binary in home.

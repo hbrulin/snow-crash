@@ -1,0 +1,7 @@
+find / -name level05
+cat /var/mail/level05
+cat /usr/sbin/openarenaserver
+cd /opt/openarenaserver/
+touch getflag.sh
+vim getflag.sh && edit as in Ressources
+cat /tmp/flag05
