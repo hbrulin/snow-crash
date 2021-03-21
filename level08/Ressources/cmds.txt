@@ -1,0 +1,5 @@
+./level08 token
+ltrace ./level08 token 
+chmod 777 . #check if necessary
+mv token tok
+./level08 tok

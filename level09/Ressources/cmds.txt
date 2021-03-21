@@ -1,0 +1,5 @@
+chmod 777 .
+touch prog.c
+vim prog.c to copy file in Ressources
+gcc prog.c
+./a.out token

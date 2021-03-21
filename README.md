@@ -118,9 +118,9 @@ ou use echo data xxd -r -p : echo 66745f77616e64727f7f7f4e4452656c7f4c304c0d000d
 - level 03
 There is a binary that, when launched, says Exploit me.
 If i cat the file, I see "/usr/bin/env echo Exploit me"
-I can in /tmp file, create a file called echo and use getflag in it.
+I can in /tmp file, create a file called echo and use getflag in it. (I can do it where I am if i use chmod 777 .)
 
-TODO : but why does it work in binary but not normally? histoire de droit suid?
+TODO : but why does it work in binary but not normally? histoire de droit suid? voir ls -la si c'est bien grâce à ça.
 
 Go directly to level04 with the flag.
 
@@ -140,10 +140,8 @@ Create a script that calls getflag, and wait for it to disappear (accoridng to c
 
 - level06
 One script and one binary in home.
-level06 execute level06.php with the flag06 suid : https://fr.wikipedia.org/wiki/Permissions_UNIX#Droit_SUID -> Lorsque le droit SUID est appliqué à un exécutable et qu'un utilisateur quelconque l'exécute, le programme détiendra alors les droits du propriétaire du fichier durant son exécution.
+level06 execute level06.php with the flag06 suid : https://fr.wikipedia.org/wiki/Permissions_UNIX#Droit_SUID -> Lorsque le droit SUID est appliqué à un exécutable et qu'un utilisateur quelconque l'exécute, le programme détiendra alors les droits du propriétaire du fichier durant son exécution. -> ça se voit avec ls -la. donc si je l'exécute correctement, j'ai les bons droits pour getflag.
 Changer le fichier php pour qu'il call getflag.
-
-TODO : - bien vérifier comment on voit suid
 
 - level07
 ./level07 outputs level07.
@@ -157,3 +155,22 @@ So I add a command to the echo through export LOGNAME="&& getflag"
 
 todo :
 - check the diff btw strace and ltrace
+
+
+- level08
+Here level08 binary has suid of flag08, so if I execute I would act with the rights of flag08.
+Level08 seems to be a binary that reads a file given in input.
+./level08 token -> you may not access token. It has rw rights only for flag08. and
+But if I check the calls in ltrace, I can see that it only check whether or not the input file is called "token".
+So I chmod 777. puis change the name of token file.
+Then launch ./level08 tok --> quif5eloekouj29ke0vouxean
+Puis login to flag08, getflag et level09.
+
+TODO :
+- check if it's better to chmod 777 . or to make a soft link.
+- vérifier ce que fait exactement chmod777
+
+- level09
+It seems that ./level09 takes a string and prints str[i] + i.
+create a program that reads insode token file and does the same in reverse.
+I get password : f3iji1ju5yuevaus41q1afiuq.
