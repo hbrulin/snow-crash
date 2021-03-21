@@ -20,19 +20,14 @@ RUN apk add --no-cache tshark
 
 WORKDIR /root
 
-#john
-#RUN wget https://www.openwall.com/john/k/john-1.9.0-jumbo-1.tar.xz
-#RUN tar -xvf john-1.9.0-jumbo-1.tar.xz
-#RUN rm john-1.9.0-jumbo-1.tar.xz
-#RUN ./john-1.9.0-jumbo-1/src/configure 
-#RUN mv john_build_rule.h john-1.9.0-jumbo-1/src/
-#RUN cd john-1.9.0-jumbo-1/src/yescrypt && make -s
 RUN git clone https://github.com/magnumripper/JohnTheRipper.git
 WORKDIR JohnTheRipper/src
 RUN ./configure && make clean && make -s
 
 WORKDIR /root
 RUN echo 'alias john="./JohnTheRipper/run/john"' >> ~/.bashrc
+
+RUN apk add --no-cache xxd
 
 EXPOSE 8080:8080
 EXPOSE 2200:22

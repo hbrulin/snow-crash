@@ -3,8 +3,8 @@ scp -P 4242 level02@192.168.99.106:level02.pcap . #indocker
 tshark -n -V -r level02.pcap | grep -i 'authentication\|plain *text\|pass *word\|user *name\|simple:\|parameter name:\|parameter value:\|credentials:'
 #tshark -V -r level02.pcap > result : verbose option to expand on all packets.
 
-#Then I list all the data streams and find the one that says "password"
+#Then I list all the data streams and find the one that I know says "password"
 tshark -r level02.pcap -T fields -e  data
-
-Then I decode all the packages below to find my password : https://www.convertstring.com/fr/EncodeDecode/HexDecode
+#All the data below is my password, byte by byte
+echo 66745f77616e64727f7f7f4e4452656c7f4c304c0d000d0a01 | xxd -r -p  
 

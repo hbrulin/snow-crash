@@ -112,6 +112,7 @@ ALl of what is below is my password being sent, until last line :
 01
 
 Decode it here: https://www.convertstring.com/fr/EncodeDecode/HexDecode ==> ft_wandrNDRelL0L
+ou use echo data xxd -r -p : echo 66745f77616e64727f7f7f4e4452656c7f4c304c0d000d0a01 | xxd -r -p
 
 
 - level 03
