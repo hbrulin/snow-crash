@@ -127,10 +127,11 @@ Go directly to level04 with the flag.
 - level04
 Il y a un fichier : level04.pl. C'est un script perl.
 On voit l'adresse où on peut envoyer une requête.
+L'envoi curl requête POST correspond à taper http://192.168.99.106:4747/?x=`getflag` dans browser.
 
 TODO: 
 - bien comprendre chaque ligne du script perl.
-- use it with curl in docker?
+- pourquoi les quotes ``?
 
 - level 5
 Chercher un folder level05 de la même manière qu'au level00.
