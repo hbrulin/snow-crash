@@ -120,7 +120,7 @@ There is a binary that, when launched, says Exploit me.
 If i cat the file, I see "/usr/bin/env echo Exploit me"
 I can in /tmp file, create a file called echo and use getflag in it.
 
-TODO : but why does it work in binary but not normally?
+TODO : but why does it work in binary but not normally? histoire de droit suid?
 
 Go directly to level04 with the flag.
 
@@ -138,5 +138,11 @@ Aller voir ce mail : */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
 It's a cron tab -> the file openarenaserver is launched regularly. It's a script that executed script in the folder /opt/openarenaserver.
 Create a script that calls getflag, and wait for it to disappear (accoridng to cron time job).
 
--level06
+- level06
 One script and one binary in home.
+level06 execute level06.php with the flag06 suid : https://fr.wikipedia.org/wiki/Permissions_UNIX#Droit_SUID -> Lorsque le droit SUID est appliqué à un exécutable et qu'un utilisateur quelconque l'exécute, le programme détiendra alors les droits du propriétaire du fichier durant son exécution.
+Changer le fichier php pour qu'il call getflag.
+
+TODO : - bien vérifier comment on voit suid
+
+- level07

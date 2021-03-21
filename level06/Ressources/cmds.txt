@@ -1,0 +1,4 @@
+chmod 777 . #can't delete with just chmod the file.
+rm level06.php 
+touch level06.php
+./level06
