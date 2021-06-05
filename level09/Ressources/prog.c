@@ -6,17 +6,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int ac, char **av) {
-    int			fd;
-	char		p[50];
+int main(int ac, char **av)
+{
+    int fd;
+    char p[50];
 
-	fd = open(av[1], O_RDONLY);
-	read(fd, p, 50);
-	close(fd);
+    fd = open(av[1], O_RDONLY);
+    read(fd, p, 50);
+    close(fd);
     puts(p);
     int i = 0;
-    while (i < strlen(p)) {
-        p[i] = p[i] + i;
+    while (i < strlen(p))
+    {
+        p[i] = p[i] - i;
         i++;
     }
     puts(p);

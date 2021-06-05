@@ -1,7 +1,9 @@
 ls
 scp -P 4242 level02@192.168.99.106:level02.pcap . #indocker
-tshark -n -V -r level02.pcap | grep -i 'authentication\|plain *text\|pass *word\|user *name\|simple:\|parameter name:\|parameter value:\|credentials:'
-#tshark -V -r level02.pcap > result : verbose option to expand on all packets.
+tshark -n -V -r level02.pcap | grep -i -n 'authentication\|plain *text\|pass *word\|user *name\|simple:\|parameter name:\|parameter value:\|credentials:'
+#we get a line where data stream has Password hex dump in it.
+tshark -V -r level02.pcap > result : verbose option to expand on all packets.
+head -n 4114 result # we find that the hex dump is in a data stream
 
 #Then I list all the data streams and find the one that I know says "password"
 tshark -r level02.pcap -T fields -e  data
